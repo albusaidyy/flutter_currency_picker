@@ -17,6 +17,7 @@ dependencies:
 flutter:
   assets:
     - lib/src/res/
+    - lib/src/res/flags/
 
 dev_dependencies:
   flutter_test:

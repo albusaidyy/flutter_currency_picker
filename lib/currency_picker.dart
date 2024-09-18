@@ -61,7 +61,7 @@ void showCurrencyPicker({
   CurrencyPickerThemeData? theme,
   @Deprecated(
     'Use inputDecoration instead. '
-        'This feature was deprecated after v2.0.18.',
+    'This feature was deprecated after v2.0.18.',
   )
   String? searchHint,
 }) {
