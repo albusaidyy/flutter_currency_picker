@@ -82,4 +82,34 @@ class Currency {
         'thousands_separator': thousandsSeparator,
         'space_between_amount_and_symbol': spaceBetweenAmountAndSymbol,
       };
+
+  Currency copyWith({
+    String? code,
+    String? name,
+    String? symbol,
+    String? flag,
+    int? number,
+    String? alpha2Code,
+    int? decimalDigits,
+    String? namePlural,
+    bool? symbolOnLeft,
+    String? decimalSeparator,
+    String? thousandsSeparator,
+    bool? spaceBetweenAmountAndSymbol,
+  }) {
+    return Currency(
+      code: code ?? this.code,
+      name: name ?? this.name,
+      symbol: symbol ?? this.symbol,
+      flag: flag ?? this.flag,
+      number: number ?? this.number,
+      alpha2Code: alpha2Code ?? this.alpha2Code,
+      decimalDigits: decimalDigits ?? this.decimalDigits,
+      namePlural: namePlural ?? this.namePlural,
+      symbolOnLeft: symbolOnLeft ?? this.symbolOnLeft,
+      decimalSeparator: decimalSeparator ?? this.decimalSeparator,
+      thousandsSeparator: thousandsSeparator ?? this.thousandsSeparator,
+      spaceBetweenAmountAndSymbol: spaceBetweenAmountAndSymbol ?? this.spaceBetweenAmountAndSymbol,
+    );
+  }
 }
