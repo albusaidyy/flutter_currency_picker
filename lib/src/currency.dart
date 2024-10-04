@@ -109,7 +109,8 @@ class Currency {
       symbolOnLeft: symbolOnLeft ?? this.symbolOnLeft,
       decimalSeparator: decimalSeparator ?? this.decimalSeparator,
       thousandsSeparator: thousandsSeparator ?? this.thousandsSeparator,
-      spaceBetweenAmountAndSymbol: spaceBetweenAmountAndSymbol ?? this.spaceBetweenAmountAndSymbol,
+      spaceBetweenAmountAndSymbol:
+          spaceBetweenAmountAndSymbol ?? this.spaceBetweenAmountAndSymbol,
     );
   }
 }
