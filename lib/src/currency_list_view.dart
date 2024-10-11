@@ -1,10 +1,5 @@
-import 'package:currency_picker/src/extensions.dart';
+import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
-
-import 'currency.dart';
-import 'currency_picker_theme_data.dart';
-import 'currency_service.dart';
-import 'currency_utils.dart';
 
 class CurrencyListView extends StatefulWidget {
   /// Called when a currency is select.
@@ -56,7 +51,7 @@ class CurrencyListView extends StatefulWidget {
   final CurrencyPickerThemeData? theme;
 
   const CurrencyListView({
-    Key? key,
+    super.key,
     required this.onSelect,
     this.favorite,
     this.currencyFilter,
@@ -68,7 +63,7 @@ class CurrencyListView extends StatefulWidget {
     this.physics,
     this.controller,
     this.theme,
-  }) : super(key: key);
+  });
 
   @override
   _CurrencyListViewState createState() => _CurrencyListViewState();
@@ -123,16 +118,17 @@ class _CurrencyListViewState extends State<CurrencyListView> {
           child: widget.showSearchField
               ? TextField(
                   controller: _searchController,
-                  decoration: widget.theme?.inputDecoration ?? InputDecoration(
-                    labelText: widget.searchHint ?? "Search",
-                    hintText: widget.searchHint ?? "Search",
-                    prefixIcon: const Icon(Icons.search),
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: const Color(0xFF8C98A8).withOpacity(0.2),
+                  decoration: widget.theme?.inputDecoration ??
+                      InputDecoration(
+                        labelText: widget.searchHint ?? "Search",
+                        hintText: widget.searchHint ?? "Search",
+                        prefixIcon: const Icon(Icons.search),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: const Color(0xFF8C98A8).withOpacity(0.2),
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
                   onChanged: _filterSearchResults,
                 )
               : Container(),
@@ -183,7 +179,7 @@ class _CurrencyListViewState extends State<CurrencyListView> {
                   children: [
                     const SizedBox(width: 15),
                     if (widget.showFlag) ...[
-                      _flagWidget(currency),
+                      CurrencyUtils.currencyFlag(currency),
                       const SizedBox(width: 15),
                     ],
                     Expanded(
@@ -220,31 +216,6 @@ class _CurrencyListViewState extends State<CurrencyListView> {
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _flagWidget(Currency currency) {
-    if (currency.flag == null) {
-      return Image.asset(
-        'no_flag.png'.imagePath,
-        package: 'currency_picker',
-        width: 27,
-      );
-    }
-
-    if (currency.isFlagImage) {
-      return Image.asset(
-        currency.flag!.imagePath,
-        package: 'currency_picker',
-        width: 27,
-      );
-    }
-
-    return Text(
-      CurrencyUtils.currencyToEmoji(currency),
-      style: TextStyle(
-        fontSize: widget.theme?.flagSize ?? 25,
       ),
     );
   }

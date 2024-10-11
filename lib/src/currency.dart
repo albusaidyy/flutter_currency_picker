@@ -16,6 +16,9 @@ class Currency {
   ///The currency number
   final int number;
 
+  ///The country alpha2Code
+  final String alpha2Code;
+
   ///The currency decimal digits
   final int decimalDigits;
 
@@ -42,6 +45,7 @@ class Currency {
     required this.symbol,
     required this.flag,
     required this.number,
+    required this.alpha2Code,
     required this.decimalDigits,
     required this.namePlural,
     required this.symbolOnLeft,
@@ -55,6 +59,7 @@ class Currency {
         name = json['name'],
         symbol = json['symbol'],
         number = json['number'],
+        alpha2Code = json['alpha_2_code'],
         flag = json['flag'],
         decimalDigits = json['decimal_digits'],
         namePlural = json['name_plural'],
@@ -68,6 +73,7 @@ class Currency {
         'name': name,
         'symbol': symbol,
         'number': number,
+        'alpha_2_code': alpha2Code,
         'flag': flag,
         'decimal_digits': decimalDigits,
         'name_plural': namePlural,
@@ -76,4 +82,35 @@ class Currency {
         'thousands_separator': thousandsSeparator,
         'space_between_amount_and_symbol': spaceBetweenAmountAndSymbol,
       };
+
+  Currency copyWith({
+    String? code,
+    String? name,
+    String? symbol,
+    String? flag,
+    int? number,
+    String? alpha2Code,
+    int? decimalDigits,
+    String? namePlural,
+    bool? symbolOnLeft,
+    String? decimalSeparator,
+    String? thousandsSeparator,
+    bool? spaceBetweenAmountAndSymbol,
+  }) {
+    return Currency(
+      code: code ?? this.code,
+      name: name ?? this.name,
+      symbol: symbol ?? this.symbol,
+      flag: flag ?? this.flag,
+      number: number ?? this.number,
+      alpha2Code: alpha2Code ?? this.alpha2Code,
+      decimalDigits: decimalDigits ?? this.decimalDigits,
+      namePlural: namePlural ?? this.namePlural,
+      symbolOnLeft: symbolOnLeft ?? this.symbolOnLeft,
+      decimalSeparator: decimalSeparator ?? this.decimalSeparator,
+      thousandsSeparator: thousandsSeparator ?? this.thousandsSeparator,
+      spaceBetweenAmountAndSymbol:
+          spaceBetweenAmountAndSymbol ?? this.spaceBetweenAmountAndSymbol,
+    );
+  }
 }
